@@ -18,7 +18,7 @@ Com NPM
 npm install -g @vue/cli
 ```
 
-Com YARN
+Ou com YARN
 ```
 yarn global add @vue/cli<br>
 ```

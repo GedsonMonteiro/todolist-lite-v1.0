@@ -2,8 +2,9 @@
 
   <div class="app">
     <ol>
-      <li v-for="todo in todos" v-bind:key="todo.id"> <!-- O v-bind:key="todo.id" é para cada li tem um id unico. -->
-        <p>{{ todo.text }}</p> <!-- O {{ todo.text }} vai fazer o <p></p> renderizar o texto da tarefa. -->
+      <li v-for="todo in todos" v-bind:key="todo.text"> <!-- O v-bind:key="todo.id" é para cada li ter um id unico. -->
+        <p>{{ todo.text }} <button type="submit" @click="removeItem(todo.id)">Deletar</button></p> <!-- O {{ todo.text }} vai fazer o <p></p> renderizar o texto da tarefa. -->
+          <span> {{ todo.id }} </span>
       </li>
     </ol>
 
@@ -22,16 +23,13 @@
 export default {
   data() {
     return {
-      todos: [{
-        id: 1, 
-        text: '',
-        todos: [],
-      }],
+      todos: [],
+      text: ''
     };
   },
   methods: {
     addTodo(text) {
-      if (text !== " ") {
+      if (text !== "") {
         this.todos.push({
           id: this.todos.lenght+1,
           text,
@@ -42,6 +40,9 @@ export default {
     removeTodos(index) {
       this.todos.splice(index, 1);
     },
+    removeItem(index) {
+      this.todos.splice(index, 1);
+    }
   },
 };
 </script>
